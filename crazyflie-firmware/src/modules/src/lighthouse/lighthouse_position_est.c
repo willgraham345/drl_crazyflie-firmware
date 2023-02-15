@@ -10,7 +10,7 @@
  * Copyright (C) 2019 - 2020 Bitcraze AB
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
+ * it under the terms of the GNU General Public License as published byeEb
  * the Free Software Foundation, in version 3.
  *
  * This program is distributed in the hope that it will be useful,
@@ -40,7 +40,7 @@
 #include "lighthouse_position_est.h"
 #include "lighthouse_geometry.h"
 #include "lighthouse_state.h"
-
+// NOTE: This is where the actual lighthouse position estimate is made
 #define ONE_SECOND 1000
 #define HALF_SECOND 500
 static STATS_CNT_RATE_DEFINE(positionRate, ONE_SECOND);
@@ -202,8 +202,8 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   mat_trans(&lh1Rotor2Rot_, &lh1Rotor2RotInverted_);
 }
 
-
-// Sensor positions on the deck
+// NOTE: sensorDeckPositions delcared here
+// Sensor positions on the deck 
 #define SENSOR_POS_W (0.015f / 2.0f)
 #define SENSOR_POS_L (0.030f / 2.0f)
 static vec3d sensorDeckPositions[4] = {
@@ -444,6 +444,7 @@ static void estimateYaw(const pulseProcessor_t *state, pulseProcessorResult_t* a
   const vec3d n = {R[0][2], R[1][2], R[2][2]};
 
   // Calculate yaw delta using only one base station for now
+  // NOTE: CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH here, might be where we disable for Vicon control.
   float yawDelta;
   if (estimateYawDeltaOneBaseStation(baseStation, angles, state->bsGeometry, cfPos, n, &RR, &yawDelta)) {
     #ifndef CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH
