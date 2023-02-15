@@ -175,6 +175,7 @@ static void lighthousePositionGeometryDataUpdated(const int baseStation) {
   modifyBit(&lighthouseCoreState.baseStationGeoValidMap, baseStation, lighthouseCoreState.bsGeometry[baseStation].valid);
 }
 
+//NOTE: I think this is where we set the Geometry data, used in the lighthouse_geometry.h? (not 100% sure on this.)
 void lighthousePositionSetGeometryData(const uint8_t baseStation, const baseStationGeometry_t* geometry) {
   if (baseStation < CONFIG_DECK_LIGHTHOUSE_MAX_N_BS) {
     lighthouseCoreState.bsGeometry[baseStation] = *geometry;
@@ -202,8 +203,8 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   mat_trans(&lh1Rotor2Rot_, &lh1Rotor2RotInverted_);
 }
 
-// NOTE: sensorDeckPositions delcared here
-// Sensor positions on the deck 
+// NOTE: sensorDeckPositions delcared here, this is where the GitHub dude directed me. I think I should flip this matrix, and it should work? (not 100% sure on this.)
+// Sensor positions on the deck. I think this is fine, but we'll need to edit the geometry of the lighthouse to match the new sensor positions.
 #define SENSOR_POS_W (0.015f / 2.0f)
 #define SENSOR_POS_L (0.030f / 2.0f)
 static vec3d sensorDeckPositions[4] = {

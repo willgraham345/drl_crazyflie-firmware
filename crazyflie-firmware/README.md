@@ -1,38 +1,24 @@
-# Crazyflie Firmware  [![CI](https://github.com/bitcraze/crazyflie-firmware/workflows/CI/badge.svg)](https://github.com/bitcraze/crazyflie-firmware/actions?query=workflow%3ACI)
+# Crazyflie firmware release checklist
+====================================
+## To Do
+- Flip orientation of the crazyflie within the cfclient
 
-This project contains the source code for the firmware used in the Crazyflie range of platforms, including the Crazyflie 2.X and the Roadrunner.
+# Notes From Will
+## Files and Functions
+lighthouse_position_est.c 
+- (/home/drewlab/drl_crazyflie-firmware/crazyflie-firmware/src/modules/src/lighthouse/lighthouse_position_est.c)
+lighthouse_geometry.c
+- /home/drewlab/drl_crazyflie-firmware/crazyflie-firmware/src/utils/src/lighthouse/lighthouse_geometry.c
 
-### Crazyflie 1.0 support
+lighthouse_position_est.c
+I think this file is used to update the lighthouse_geometry.h, but I'm not sure
+- We might also need to disable `CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH` if we want to control only through vicon 
+- `sensorDeckPositions` is a spot the Github guy directed me to look at. It's important for yaw control. The Lighthouse may only be contributing to the yaw control of the crazyflies
 
-The 2017.06 release was the last release with Crazyflie 1.0 support. If you want
-to play with the Crazyflie 1.0 and modify the code, please clone this repo and
-branch off from the 2017.06 tag.
+lighthouse_geometry.c
+Where the actual lighthouse position estimate is made
+- `origin1` and `origin2` are parameters that shouldn't be static if the turtlebot is in motion. 
+  - We'll need to change them to dynamic pointers? (or at least modifyable memory)
 
-## Building and Flashing
-See the [building and flashing instructions](https://github.com/bitcraze/crazyflie-firmware/blob/master/docs/building-and-flashing/build.md) in the github docs folder.
-
-
-## Official Documentation
-
-Check out the [Bitcraze crazyflie-firmware documentation](https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/) on our website.
-
-## Generated documentation
-
-The easiest way to generate the API documentation is to use the [toolbelt](https://github.com/bitcraze/toolbelt)
-
-```tb build-docs```
-
-and to view it in a web page
-
-```tb docs```
-
-## Contribute
-Go to the [contribute page](https://www.bitcraze.io/contribute/) on our website to learn more.
-
-### Test code for contribution
-
-To run the tests please have a look at the [unit test documentation](https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/development/unit_testing/).
-
-## License
-
-The code is licensed under LGPL-3.0
+### General Notes about the Firmware
+any arm_**** functions are sourced from the vendor folder, and are microcontroller-specific instructions
