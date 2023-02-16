@@ -3,6 +3,21 @@
 ## To Do
 - Flip orientation of the crazyflie within the cfclient
 
+
+## How to Flash
+Making default firmware
+```
+make cf2_defconfig
+make -j 12
+```
+Compiling New Firmware for Crazyflie already in Bootloader
+```
+make cload
+```
+Automatically enter bootloader mode
+```
+CLOAD_CMDS="-w radio://0/80/2M" make cload
+```
 # Notes From Will
 ## Files and Functions
 lighthouse_position_est.c 
@@ -22,3 +37,16 @@ Where the actual lighthouse position estimate is made
 
 ### General Notes about the Firmware
 any arm_**** functions are sourced from the vendor folder, and are microcontroller-specific instructions
+
+
+# Questions for Dr. Drew
+1. Any way to make the crayzflie enter bootloader mode from the command line using the Crazyradio?
+  - The above methods (CLOAD_CMDS .... make cload) don't work
+    - python3 -m cfloader -w radio://0/80/2M flash  cf2.bin stm32-fw
+    Reset to bootloader mode ...
+    Failed to flash: Could not connect to bootloader
+    make[1]: *** [/home/drewlab/drl_crazyflie-firmware/crazyflie-firmware/Makefile:142: cload] Error 255
+    make[1]: Leaving directory '/home/drewlab/drl_crazyflie-firmware/crazyflie-firmware/build'
+    make: *** [tools/kbuild/Makefile.kbuild:150: sub-make] Error 2
+2. Tips for learning how Makefiles work?
+3. 
