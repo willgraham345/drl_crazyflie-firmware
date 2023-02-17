@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "lighthouse_position_est.h": "c",
-        "estimator_kalman.h": "c"
+        "estimator_kalman.h": "c",
+        "lighthouse_types.h": "c"
     }
 }

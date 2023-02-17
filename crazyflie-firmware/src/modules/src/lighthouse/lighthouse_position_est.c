@@ -190,10 +190,16 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   mat_trans(&bsRot_, &bsRotInverted_);
 
   // In a LH1 system, the axis of rotation of the second rotor is perpendicular to the first rotor
+  // mat3d secondRotorInvertedR = {
+  //   {1, 0, 0},
+  //   {0, 0, -1},
+  //   {0, 1, 0}
+  // };
+  // My attempt, not sure
   mat3d secondRotorInvertedR = {
     {1, 0, 0},
-    {0, 0, -1},
-    {0, 1, 0}
+    {0, -1, 0},
+    {0, 0, -1}
   };
   arm_matrix_instance_f32 secondRotorInvertedR_ = {3, 3, (float32_t *)secondRotorInvertedR};
   arm_matrix_instance_f32 lh1Rotor2Rot_ = {3, 3, (float32_t *)lh1Rotor2Rot};

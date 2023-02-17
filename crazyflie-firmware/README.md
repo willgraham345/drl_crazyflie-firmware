@@ -35,6 +35,9 @@ Where the actual lighthouse position estimate is made
 - `origin1` and `origin2` are parameters that shouldn't be static if the turtlebot is in motion. 
   - We'll need to change them to dynamic pointers? (or at least modifyable memory)
 
+
+lighthouse_storage.h
+- I think this might be where we store the geometry when we "Write to Crazyflie" from the python client. 
 ### General Notes about the Firmware
 any arm_**** functions are sourced from the vendor folder, and are microcontroller-specific instructions
 
@@ -49,4 +52,4 @@ any arm_**** functions are sourced from the vendor folder, and are microcontroll
     make[1]: Leaving directory '/home/drewlab/drl_crazyflie-firmware/crazyflie-firmware/build'
     make: *** [tools/kbuild/Makefile.kbuild:150: sub-make] Error 2
 2. Tips for learning how Makefiles work?
-3. 
+3. In the src directory, what's the difference between interface and utils? 
