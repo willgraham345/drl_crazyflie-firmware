@@ -1,0 +1,11 @@
+test/utils/src/test_statsCnt.c:38:testThatRateCounterIsInitialized:PASS
+test/utils/src/test_statsCnt.c:55:testThatRateIsComputedWhenTimeSinceLastComputationIsLongerThanTheInterval:PASS
+test/utils/src/test_statsCnt.c:85:testThatRateNotIsComputedWhenTimeSinceLastComputationIsLessThanTheInterval:PASS
+test/utils/src/test_statsCnt.c:113:testThatRateLoggerIsInitialized:PASS
+test/utils/src/test_statsCnt.c:127:testThatRateLoggerIsInitializedInline:PASS
+test/utils/src/test_statsCnt.c:136:testThatStatsCntRateLoggerCanBeCastToLogByFunction:PASS
+test/utils/src/test_statsCnt.c:150:testThatCounterIsIncreased:PASS
+
+-----------------------
+7 Tests 0 Failures 0 Ignored 
+OK

@@ -1,0 +1,24 @@
+test/modules/src/test_param_logic.c:82:testSetUint8:PASS
+test/modules/src/test_param_logic.c:96:testSetUint16:PASS
+test/modules/src/test_param_logic.c:110:testSetUint32:PASS
+test/modules/src/test_param_logic.c:124:testSetInt8:PASS
+test/modules/src/test_param_logic.c:138:testSetInt16:PASS
+test/modules/src/test_param_logic.c:152:testSetInt32:PASS
+test/modules/src/test_param_logic.c:167:testGetUint8:PASS
+test/modules/src/test_param_logic.c:181:testGetUint16:PASS
+test/modules/src/test_param_logic.c:195:testGetUint32:PASS
+test/modules/src/test_param_logic.c:209:testGetInt8:PASS
+test/modules/src/test_param_logic.c:223:testGetInt16:PASS
+test/modules/src/test_param_logic.c:237:testGetInt32:PASS
+test/modules/src/test_param_logic.c:251:testGetFloat:PASS
+test/modules/src/test_param_logic.c:264:testPersistentSetGetFloat:PASS
+test/modules/src/test_param_logic.c:281:testReadProcessUint8:PASS
+test/modules/src/test_param_logic.c:300:testWriteProcessUint8:PASS
+test/modules/src/test_param_logic.c:331:testPersistentGetStateWithStoredParameter:PASS
+test/modules/src/test_param_logic.c:371:testPersistentGetStateWithShortStoredParameter:PASS
+test/modules/src/test_param_logic.c:405:testPersistentGetStateWithoutStoredParameter:PASS
+test/modules/src/test_param_logic.c:439:testPersistentGetStateWithNonExistingParameter:PASS
+
+-----------------------
+20 Tests 0 Failures 0 Ignored 
+OK

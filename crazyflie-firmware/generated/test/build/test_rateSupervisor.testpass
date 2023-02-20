@@ -1,0 +1,12 @@
+test/utils/src/test_rateSupervisor.c:49:testThatValidationPassesBeforeEvaluation:PASS
+test/utils/src/test_rateSupervisor.c:58:testThatValidationPassesWhenCountIsWithinInterval:PASS
+test/utils/src/test_rateSupervisor.c:70:testThatValidationFailesWhenCountIsTooLow:PASS
+test/utils/src/test_rateSupervisor.c:80:testThatValidationPassesWhenCountIsTooHigh:PASS
+test/utils/src/test_rateSupervisor.c:94:testThatCounterIsResetAtEvaluation:PASS
+test/utils/src/test_rateSupervisor.c:110:testThatLatestCountIsStored:PASS
+test/utils/src/test_rateSupervisor.c:122:testThatValidationPassesWithSkip:PASS
+test/utils/src/test_rateSupervisor.c:134:testThatValidationFailesAfterSkip:PASS
+
+-----------------------
+8 Tests 0 Failures 0 Ignored 
+OK

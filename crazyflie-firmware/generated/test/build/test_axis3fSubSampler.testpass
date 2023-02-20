@@ -1,0 +1,9 @@
+test/modules/src/test_axis3fSubSampler.c:20:testThatOneSampleIsUnchanged:PASS
+test/modules/src/test_axis3fSubSampler.c:36:testThatSamplesAreAveraged:PASS
+test/modules/src/test_axis3fSubSampler.c:54:testThatResultIsUnchangedWhenNoNewSamplesAreAccumulated:PASS
+test/modules/src/test_axis3fSubSampler.c:70:testThatResultIsUpdatedWhenNewSamplesAreAccumulated:PASS
+test/modules/src/test_axis3fSubSampler.c:87:testThatResultIsMultipliedWithConversionFactor:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK

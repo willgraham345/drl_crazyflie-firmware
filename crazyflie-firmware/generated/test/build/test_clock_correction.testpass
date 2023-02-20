@@ -1,0 +1,13 @@
+test/utils/src/test_clock_correction.c:19:testGetClockCorrection:PASS
+test/utils/src/test_clock_correction.c:35:testCalculateClockCorrectionWithValidInputDataWithoutWrapAround:PASS
+test/utils/src/test_clock_correction.c:54:testCalculateClockCorrectionWithValidInputDataWithWrapAround:PASS
+test/utils/src/test_clock_correction.c:77:testCalculateClockCorrectionWithInvalidInputData:PASS
+test/utils/src/test_clock_correction.c:94:testUpdateClockCorrectionWithSampleInTheOuterLimitOfTheSpecs:PASS
+test/utils/src/test_clock_correction.c:116:testUpdateClockCorrectionWithSampleInTheInnerLimitOfTheSpecsWithEmptyBucket:PASS
+test/utils/src/test_clock_correction.c:138:testUpdateClockCorrectionWithSampleInTheOuterLimitOfTheAcceptableNoiseWithEmptyBucket:PASS
+test/utils/src/test_clock_correction.c:160:testUpdateClockCorrectionWithSampleInTheOuterLimitOfTheAcceptableNoiseWithNonEmptyBucket:PASS
+test/utils/src/test_clock_correction.c:182:testUpdateClockCorrectionWithSampleInTheInnerLimitOfTheAcceptableNoise:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK

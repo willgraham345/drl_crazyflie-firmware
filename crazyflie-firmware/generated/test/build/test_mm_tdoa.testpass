@@ -1,0 +1,7 @@
+test/modules/src/kalman_core/test_mm_tdoa.c:31:testThatScalarUpdateIsCalledInSimpleCase:PASS
+test/modules/src/kalman_core/test_mm_tdoa.c:64:testThatSampleWhereDroneIsInSamePositionAsAnchorIsIgnored:PASS
+test/modules/src/kalman_core/test_mm_tdoa.c:87:testThatScalarUpdateIsNotCalledWhenTheOutlierFilterIsBlocking:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK

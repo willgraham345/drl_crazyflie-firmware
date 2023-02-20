@@ -1,0 +1,16 @@
+test/modules/src/lighthouse/test_lighthouse_core.c:56:testThatUartFrameIsDetected:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:71:testThatUartSyncFramesAreSkipped:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:90:testThatCorruptUartFramesAreDetectedWithOnesInFirstPadding:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:103:testThatCorruptUartFramesAreDetectedWithOnesInSecondPadding:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:116:testThatTimeStampIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:131:testThatWidthIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:146:testThatOffsetIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:166:testThatBeamDataIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:183:testThatSensorIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:200:testThatLackOfChannelIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:217:testThatChannelIsDecodedInUartFrame:PASS
+test/modules/src/lighthouse/test_lighthouse_core.c:235:testThatSlowBitIsDecodedInUartFrame:PASS
+
+-----------------------
+12 Tests 0 Failures 0 Ignored 
+OK

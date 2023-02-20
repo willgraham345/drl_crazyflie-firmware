@@ -1,0 +1,26 @@
+test/utils/src/test_eprintf.c:48:testThatTextIsPrinted:PASS
+test/utils/src/test_eprintf.c:59:testThatTheNumberOfCharactersIsReturned:PASS
+test/utils/src/test_eprintf.c:70:testThatStringIsPrinted:PASS
+test/utils/src/test_eprintf.c:77:testThatIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:86:testThatIntIsPrinted2:PASS
+test/utils/src/test_eprintf.c:95:testThatLongIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:104:testThatLongLongIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:113:testThatUnsignedIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:122:testThatLongUnsignedIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:131:testThatLongLongUnsignedIntIsPrinted:PASS
+test/utils/src/test_eprintf.c:140:testThatHexIsPrinted:PASS
+test/utils/src/test_eprintf.c:154:testThatHexIsPrinted2:PASS
+test/utils/src/test_eprintf.c:163:testThatLongHexIsPrinted:PASS
+test/utils/src/test_eprintf.c:173:testThatLongLongHexIsPrinted:PASS
+test/utils/src/test_eprintf.c:182:testThatHexWithWidthIsPrinted:PASS
+test/utils/src/test_eprintf.c:191:testThatDoubleIsPrintedWithRoundingErrors:PASS
+test/utils/src/test_eprintf.c:201:testThatHexWithZeroPaddedWidthIsPrinted:PASS
+test/utils/src/test_eprintf.c:210:testThatDoubleWithPrecisionIsPrinted:PASS
+test/utils/src/test_eprintf.c:219:testThatCharIsPrinted:PASS
+test/utils/src/test_eprintf.c:229:testThatMultipleParamsArePrinted:PASS
+test/utils/src/test_eprintf.c:237:testThatAllIntTypesArePrinted:PASS
+test/utils/src/test_eprintf.c:261:testThatPercentIsPrinted:PASS
+
+-----------------------
+22 Tests 0 Failures 0 Ignored 
+OK

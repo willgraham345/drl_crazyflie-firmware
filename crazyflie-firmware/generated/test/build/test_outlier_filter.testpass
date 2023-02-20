@@ -1,0 +1,15 @@
+test/modules/src/test_outlier_filter.c:31:testThatSamplesAreAcceptedWhenTdoaIsCloserThanDistanceBetweenAnchors:PASS
+test/modules/src/test_outlier_filter.c:44:testThatSamplesAreRejectedWhenTdoaIsGreaterThanDistanceBetweenAnchors:PASS
+test/modules/src/test_outlier_filter.c:57:testThatSamplesAreRejectedWhenTdoaIsGreaterButNegativeThanDistanceBetweenAnchors:PASS
+test/modules/src/test_outlier_filter.c:77:testThatLhFilterLetsGoodSampleThroughWhenOpen:PASS
+test/modules/src/test_outlier_filter.c:90:testThatLhFilterLetsBadSampleThroughWhenOpen:PASS
+test/modules/src/test_outlier_filter.c:103:testThatLhFilterLetsGoodSampleThroughWhenClosed:PASS
+test/modules/src/test_outlier_filter.c:116:testThatLhFilterBlocksBadSampleWhenClosed:PASS
+test/modules/src/test_outlier_filter.c:129:testThatLhFilterOpensForManyBadSamples:PASS
+test/modules/src/test_outlier_filter.c:145:testThatLhFilterOpensAfterInactivity:PASS
+test/modules/src/test_outlier_filter.c:159:testThatLhFilterClosesAfterManyGoodSamples:PASS
+test/modules/src/test_outlier_filter.c:176:testThatLhFilterOpensWithMixedSamples:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK

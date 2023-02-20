@@ -1,0 +1,13 @@
+test/platform/test_platform.c:29:testThatDeviceTypeStringIsReturned:PASS
+test/platform/test_platform.c:41:testThatDeviceTypeStringIsReturnedWithTrailingSemiColonAndKeyValues:PASS
+test/platform/test_platform.c:53:testThatDeviceTypeStringIsReturnedWhenTypeIdentifierIsShorterThan4Chars:PASS
+test/platform/test_platform.c:65:testThatDeviceTypeIsNotReturnedWhenTypeIdentifierIsTooLong:PASS
+test/platform/test_platform.c:76:testThatDeviceTypeIsNotReturnedIfVersionIfNot0:PASS
+test/platform/test_platform.c:87:testThatDeviceTypeIsNotReturnedIfSecondCharIsNotSemicolon:PASS
+test/platform/test_platform.c:98:testThatFirstMatchingPlatformConfigIsReturned:PASS
+test/platform/test_platform.c:112:testThatErrorIsReturnedWhenDeviceIsNotInConfig:PASS
+test/platform/test_platform.c:123:testThatItIsNotSearchingOutsideListOfPlatformConfigs:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK

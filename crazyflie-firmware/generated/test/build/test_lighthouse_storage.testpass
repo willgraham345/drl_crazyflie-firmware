@@ -1,0 +1,12 @@
+test/modules/src/lighthouse/test_lighthouse_storage.c:32:testThatGeoDataIsWrittenToStorage:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:43:testThatFailedGeoDataWriteToStorageReturnsFailure:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:54:testThatCalibDataIsWrittenToStorage:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:65:testThatFailedCalibDataWriteToStorageReturnsFailure:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:76:testThatNoInitializationOfGeoIsDoneWhenStorageIsEmpty:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:87:testInitializationOfGeoIsDoneFromStorage:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:108:testThatNoInitializationOfCalibIsDoneWhenStorageIsEmpty:PASS
+test/modules/src/lighthouse/test_lighthouse_storage.c:119:testInitializationOfCalibIsDoneFromStorage:PASS
+
+-----------------------
+8 Tests 0 Failures 0 Ignored 
+OK

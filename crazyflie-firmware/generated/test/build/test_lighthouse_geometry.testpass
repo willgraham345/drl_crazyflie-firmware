@@ -1,0 +1,18 @@
+test/utils/src/lighthouse/test_lighthouse_geometry.c:16:testThatBaseStationPositionIsExtracted:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:30:testThatRayIsCalculatedFromNonRotatedBaseStation:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:47:testThatRayIsCalculatedFromRotatedBaseStation:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:67:testThatRayIsCalculatedFromNonRotatedBaseStationWithHorizontalSweepAngle:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:84:testThatRayIsCalculatedFromNonRotatedBaseStationWithVerticalSweepAngle:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:101:testThatIntersectionPointIsFoundForLinePerpendicularToPlane:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:120:testThatNoIntersectionPointIsFoundForLineParallelToPlane:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:136:testThatSensorPositionIsTranslated:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:156:testThatSensorPositionIsRotated:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:177:testThatYawDeltaIsCalculatedForZeroAngle:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:194:testThatYawDeltaIsCalculatedForPiAngle:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:211:testThatYawDeltaIsCalculatedForPerpendicularVectors:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:228:testThatYawDeltaIsCalculatedForPerpendicularVectorsWithNegativeAngle:PASS
+test/utils/src/lighthouse/test_lighthouse_geometry.c:245:testThatYawDeltaIsNotCalculatedForSmallIntersectionPointVector:PASS
+
+-----------------------
+14 Tests 0 Failures 0 Ignored 
+OK

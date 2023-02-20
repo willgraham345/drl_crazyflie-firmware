@@ -1,0 +1,13 @@
+test/deck/drivers/esp32/src/test_esp_slip.c:34:testFullSentPacket:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:65:testEscapedSendData:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:97:testExtractCorrectReceivePcktCommands:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:127:testReceivedData:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:166:testEscapedReceivedData:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:202:testWrongCommandRaisesError:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:232:testThatWeIgnoreLeadingGarbage:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:273:testThatWeDetectMissingEndMarker:PASS
+test/deck/drivers/esp32/src/test_esp_slip.c:307:testThatTheBufferIsClearedBeforeWritingSomething:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK

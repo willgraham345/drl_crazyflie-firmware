@@ -1,0 +1,14 @@
+test/utils/src/test_num.c:5:testThatLimitUint16NotLimitInRange:PASS
+test/utils/src/test_num.c:18:testThatLimitUint16LimitZero:PASS
+test/utils/src/test_num.c:31:testThatLimitUint16LimitMax:PASS
+test/utils/src/test_num.c:44:testThatConstrainDoesNotLimitInRange:PASS
+test/utils/src/test_num.c:57:testThatConstrainLimitsMin:PASS
+test/utils/src/test_num.c:71:testThatConstrainLimitsMax:PASS
+test/utils/src/test_num.c:85:testThatDeadbandInDeadbandPositive:PASS
+test/utils/src/test_num.c:99:testThatDeadbandInDeadbandNegative:PASS
+test/utils/src/test_num.c:113:testThatDeadbandOutsideDeadbandPositive:PASS
+test/utils/src/test_num.c:127:testThatDeadbandOutsideDeadbandNegative:PASS
+
+-----------------------
+10 Tests 0 Failures 0 Ignored 
+OK

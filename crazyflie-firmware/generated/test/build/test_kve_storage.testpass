@@ -1,0 +1,17 @@
+test/utils/src/kve/test_kve_storage.c:57:testThatWriteItemDoesWriteTheItemAtTheRightAddress:PASS
+test/utils/src/kve/test_kve_storage.c:76:testThatWriteHoleDoesWriteAHoleAtTheRightAddress:PASS
+test/utils/src/kve/test_kve_storage.c:95:testThatWriteEndDoesWriteTheEndAtTheRightAddress:PASS
+test/utils/src/kve/test_kve_storage.c:113:testThatMoveMemoryDoesMoveAnItem:PASS
+test/utils/src/kve/test_kve_storage.c:133:testThatFindItemByKeyFindsAnItem:PASS
+test/utils/src/kve/test_kve_storage.c:148:testThatFindItemByKeyDoNotFindAnItemWhenSearchingAfterIt:PASS
+test/utils/src/kve/test_kve_storage.c:165:testThatFindItemByPrefixFindsAnItem:PASS
+test/utils/src/kve/test_kve_storage.c:185:testThatFindItemByPrefixFindsNextItem:PASS
+test/utils/src/kve/test_kve_storage.c:208:testThatFindEndFindsTheEnd:PASS
+test/utils/src/kve/test_kve_storage.c:225:testThatFindEndReturnInvalidAddressIfNoEnd:PASS
+test/utils/src/kve/test_kve_storage.c:240:testThatFindNextItemFindsTheNextItem:PASS
+test/utils/src/kve/test_kve_storage.c:257:testThatFindNextItemReturnInvalidAddressIfNoMoreItem:PASS
+test/utils/src/kve/test_kve_storage.c:274:testThatFindNextItemJumpsOverHoles:PASS
+
+-----------------------
+13 Tests 0 Failures 0 Ignored 
+OK

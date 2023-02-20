@@ -20,7 +20,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
+ *e
  *
  * lighthouse_position_est.c - position estimaton for the lighthouse system
  */
@@ -46,6 +46,7 @@
 static STATS_CNT_RATE_DEFINE(positionRate, ONE_SECOND);
 static STATS_CNT_RATE_DEFINE(estBs0Rate, HALF_SECOND);
 static STATS_CNT_RATE_DEFINE(estBs1Rate, HALF_SECOND);
+static STATS_CNT_RATE_DEFINE(secondRotorInvertedR, ONE_SECOND);
 static statsCntRateLogger_t* bsEstRates[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS] = {&estBs0Rate, &estBs1Rate};
 
 // The light planes in LH2 are tilted +- 30 degrees
@@ -188,7 +189,6 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   arm_matrix_instance_f32 bsRot_ = {3, 3, (float32_t *)bsRot};
   arm_matrix_instance_f32 bsRotInverted_ = {3, 3, (float32_t *)bsRotInverted};
   mat_trans(&bsRot_, &bsRotInverted_);
-
   // In a LH1 system, the axis of rotation of the second rotor is perpendicular to the first rotor
   // mat3d secondRotorInvertedR = {
   //   {1, 0, 0},
@@ -201,6 +201,7 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
     {0, -1, 0},
     {0, 0, -1}
   };
+  STATS_CNT_RATE_EVENT(&secondRotorInvertedR);
   arm_matrix_instance_f32 secondRotorInvertedR_ = {3, 3, (float32_t *)secondRotorInvertedR};
   arm_matrix_instance_f32 lh1Rotor2Rot_ = {3, 3, (float32_t *)lh1Rotor2Rot};
   mat_mult(&bsRot_, &secondRotorInvertedR_, &lh1Rotor2Rot_);
@@ -492,6 +493,10 @@ LOG_ADD(LOG_FLOAT, delta, &deltaLog)
 LOG_ADD_CORE(LOG_UINT16, bsGeoVal, &lighthouseCoreState.baseStationGeoValidMap)
 LOG_ADD_CORE(LOG_UINT16, bsCalVal, &lighthouseCoreState.baseStationCalibValidMap)
 
+// LOG_ADD_CORE(LOG_FLOAT, yaw, &yawLog)
+// LOG_ADD_CORE(LOG_FLOAT, yawStd, &yawStdLog)
+// LOG_ADD_CORE(LOG_FLOAT, yawDelta1, &yawDeltaLog) // Didn't do anything. Not sure why
+LOG_ADD_CORE(LOG_FLOAT, secondRotorInvertedR, &secondRotorInvertedR)
 LOG_GROUP_STOP(lighthouse)
 
 PARAM_GROUP_START(lighthouse)

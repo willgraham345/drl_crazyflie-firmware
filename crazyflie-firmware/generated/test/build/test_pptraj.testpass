@@ -1,0 +1,9 @@
+test/modules/src/test_pptraj.c:242:testFigure8Evaluation:PASS
+test/modules/src/test_pptraj.c:278:testCompressedFigure8Evaluation:PASS
+test/modules/src/test_pptraj.c:311:testCompressedFrameEvaluation:PASS
+test/modules/src/test_pptraj.c:344:testCompressedSimplifiedFigure8Evaluation:PASS
+test/modules/src/test_pptraj.c:378:testCompressedFigure8RandomOrderQueries:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK
