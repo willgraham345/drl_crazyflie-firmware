@@ -10,7 +10,7 @@
  * Copyright (C) 2019 - 2020 Bitcraze AB
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published byeEb
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, in version 3.
  *
  * This program is distributed in the hope that it will be useful,
@@ -20,7 +20,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *e
+ *
  *
  * lighthouse_position_est.c - position estimaton for the lighthouse system
  */
@@ -40,13 +40,14 @@
 #include "lighthouse_position_est.h"
 #include "lighthouse_geometry.h"
 #include "lighthouse_state.h"
-// NOTE: This is where the actual lighthouse position estimate is made
+
+// #define CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH 1
+
 #define ONE_SECOND 1000
 #define HALF_SECOND 500
 static STATS_CNT_RATE_DEFINE(positionRate, ONE_SECOND);
 static STATS_CNT_RATE_DEFINE(estBs0Rate, HALF_SECOND);
 static STATS_CNT_RATE_DEFINE(estBs1Rate, HALF_SECOND);
-static STATS_CNT_RATE_DEFINE(secondRotorInvertedR, ONE_SECOND);
 static statsCntRateLogger_t* bsEstRates[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS] = {&estBs0Rate, &estBs1Rate};
 
 // The light planes in LH2 are tilted +- 30 degrees
@@ -176,7 +177,6 @@ static void lighthousePositionGeometryDataUpdated(const int baseStation) {
   modifyBit(&lighthouseCoreState.baseStationGeoValidMap, baseStation, lighthouseCoreState.bsGeometry[baseStation].valid);
 }
 
-//NOTE: I think this is where we set the Geometry data, used in the lighthouse_geometry.h? (not 100% sure on this.)
 void lighthousePositionSetGeometryData(const uint8_t baseStation, const baseStationGeometry_t* geometry) {
   if (baseStation < CONFIG_DECK_LIGHTHOUSE_MAX_N_BS) {
     lighthouseCoreState.bsGeometry[baseStation] = *geometry;
@@ -189,19 +189,13 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   arm_matrix_instance_f32 bsRot_ = {3, 3, (float32_t *)bsRot};
   arm_matrix_instance_f32 bsRotInverted_ = {3, 3, (float32_t *)bsRotInverted};
   mat_trans(&bsRot_, &bsRotInverted_);
+
   // In a LH1 system, the axis of rotation of the second rotor is perpendicular to the first rotor
-  // mat3d secondRotorInvertedR = {
-  //   {1, 0, 0},
-  //   {0, 0, -1},
-  //   {0, 1, 0}
-  // };
-  // My attempt, not sure
   mat3d secondRotorInvertedR = {
     {1, 0, 0},
-    {0, -1, 0},
-    {0, 0, -1}
+    {0, 0, -1},
+    {0, 1, 0}
   };
-  STATS_CNT_RATE_EVENT(&secondRotorInvertedR);
   arm_matrix_instance_f32 secondRotorInvertedR_ = {3, 3, (float32_t *)secondRotorInvertedR};
   arm_matrix_instance_f32 lh1Rotor2Rot_ = {3, 3, (float32_t *)lh1Rotor2Rot};
   mat_mult(&bsRot_, &secondRotorInvertedR_, &lh1Rotor2Rot_);
@@ -210,8 +204,8 @@ static void preProcessGeometryData(mat3d bsRot, mat3d bsRotInverted, mat3d lh1Ro
   mat_trans(&lh1Rotor2Rot_, &lh1Rotor2RotInverted_);
 }
 
-// NOTE: sensorDeckPositions delcared here, this is where the GitHub dude directed me. I think I should flip this matrix, and it should work? (not 100% sure on this.)
-// Sensor positions on the deck. I think this is fine, but we'll need to edit the geometry of the lighthouse to match the new sensor positions.
+
+// Sensor positions on the deck
 #define SENSOR_POS_W (0.015f / 2.0f)
 #define SENSOR_POS_L (0.030f / 2.0f)
 static vec3d sensorDeckPositions[4] = {
@@ -220,6 +214,14 @@ static vec3d sensorDeckPositions[4] = {
     {SENSOR_POS_L, SENSOR_POS_W, 0.0},
     {SENSOR_POS_L, -SENSOR_POS_W, 0.0},
 };
+
+//This didn't work - dsd 4/28
+// static vec3d sensorDeckPositions[4] = {
+//     {-SENSOR_POS_L, -SENSOR_POS_W, 0.0},
+//     {-SENSOR_POS_L, SENSOR_POS_W, 0.0},
+//     {SENSOR_POS_L, -SENSOR_POS_W, 0.0},
+//     {SENSOR_POS_L, SENSOR_POS_W, 0.0},
+// };
 
 
 static positionMeasurement_t ext_pos;
@@ -452,7 +454,6 @@ static void estimateYaw(const pulseProcessor_t *state, pulseProcessorResult_t* a
   const vec3d n = {R[0][2], R[1][2], R[2][2]};
 
   // Calculate yaw delta using only one base station for now
-  // NOTE: CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH here, might be where we disable for Vicon control.
   float yawDelta;
   if (estimateYawDeltaOneBaseStation(baseStation, angles, state->bsGeometry, cfPos, n, &RR, &yawDelta)) {
     #ifndef CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH
@@ -493,10 +494,6 @@ LOG_ADD(LOG_FLOAT, delta, &deltaLog)
 LOG_ADD_CORE(LOG_UINT16, bsGeoVal, &lighthouseCoreState.baseStationGeoValidMap)
 LOG_ADD_CORE(LOG_UINT16, bsCalVal, &lighthouseCoreState.baseStationCalibValidMap)
 
-// LOG_ADD_CORE(LOG_FLOAT, yaw, &yawLog)
-// LOG_ADD_CORE(LOG_FLOAT, yawStd, &yawStdLog)
-// LOG_ADD_CORE(LOG_FLOAT, yawDelta1, &yawDeltaLog) // Didn't do anything. Not sure why
-LOG_ADD_CORE(LOG_FLOAT, secondRotorInvertedR, &secondRotorInvertedR)
 LOG_GROUP_STOP(lighthouse)
 
 PARAM_GROUP_START(lighthouse)

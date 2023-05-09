@@ -1,9 +1,0 @@
-test/utils/src/test_cf_math.c:5:testThatClip1ReturnsValueInRange:PASS
-test/utils/src/test_cf_math.c:16:testThatClip1Returns1ForLargeValues:PASS
-test/utils/src/test_cf_math.c:27:testThatClip1ReturnsMinus1ForNegativeLargeValues:PASS
-test/utils/src/test_cf_math.c:38:testThatLimPosReturnsValueInRange:PASS
-test/utils/src/test_cf_math.c:49:testThatLimPosReturnsZeroForNegativeValues:PASS
-
------------------------
-5 Tests 0 Failures 0 Ignored 
-OK

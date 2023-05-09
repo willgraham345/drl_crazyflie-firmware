@@ -84,6 +84,8 @@ static bool uartSynchronized = false;
 #define HALF_SECOND 500
 #define FIFTH_SECOND 200
 
+// #define CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH 1
+
 #ifdef CONFIG_DEBUG_LOG_ENABLE
 static STATS_CNT_RATE_DEFINE(serialFrameRate, ONE_SECOND);
 static STATS_CNT_RATE_DEFINE(frameRate, ONE_SECOND);
@@ -913,11 +915,9 @@ PARAM_ADD_CORE(PARAM_UINT8, bsCalibReset, &calibStatusReset)
 PARAM_ADD_CORE(PARAM_UINT8, systemType, &systemType)
 
 /**
- * @brief Bit field that indicates which base stations that are supported by the system
+ * @brief Bit field that indicates which base stations that are supported by the system - deprecated (removed after August 2023)
  *
  * The lowest bit maps to base station channel 1 and the highest to channel 16.
- *
- * Deprecated since 2022-08-15
  */
 PARAM_ADD_CORE(PARAM_UINT16 | PARAM_RONLY, bsAvailable, &baseStationAvailabledMap)
 

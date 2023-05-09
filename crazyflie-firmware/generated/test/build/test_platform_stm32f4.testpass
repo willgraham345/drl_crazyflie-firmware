@@ -1,9 +1,0 @@
-test/platform/test_platform_stm32f4.c:26:testThatFirstBlockIsReturnedIfSet:PASS
-test/platform/test_platform_stm32f4.c:39:testThatLAterBlockIsReturnedIfEarlierBlockAreCleared:PASS
-test/platform/test_platform_stm32f4.c:55:testThatDefaultPlatformStringIsCF20IfNoInfoIsSet:PASS
-test/platform/test_platform_stm32f4.c:66:testThatDefaultPlatformStringIsCF20IfAllBlocksAreCleared:PASS
-test/platform/test_platform_stm32f4.c:79:testThatNoMoreThanTheBlockSizeIsCopiedIfTheBlockIsNotNullTerminated:PASS
-
------------------------
-5 Tests 0 Failures 0 Ignored 
-OK

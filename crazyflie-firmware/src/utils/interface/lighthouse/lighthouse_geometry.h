@@ -3,8 +3,7 @@
 #include <stdbool.h>
 #include "cf_math.h"
 #include "stabilizer_types.h"
-//NOTE: This header file is used to initialize the lighthouse_geometry.c file. It is not used in the actual firmware, but it is used to generate the lighthouse_geometry.c file. The lighthouse_geometry.c file is used in the actual firmware.
-//NOTE: Big idea is we need to edit lighthouse_geometry.c's code, not this one. 
+
 typedef struct {
   __attribute__((aligned(4))) vec3d origin;
   __attribute__((aligned(4))) mat3d mat;
@@ -83,5 +82,4 @@ void lighthouseGeometryGetSensorPosition(const vec3d cfPos, const arm_matrix_ins
  *
  * @return true if the angle could be calculated
 */
-
 bool lighthouseGeometryYawDelta(const vec3d ipv, const vec3d spv, const vec3d n, float* yawDelta);

@@ -1,6 +1,0 @@
-test/modules/src/lighthouse/test_lighthouse_deck_flasher.c:27:testThaEraseFwIsCalledWhenWritingTheFirstBlock:PASS
-test/modules/src/lighthouse/test_lighthouse_deck_flasher.c:41:testThaEraseFwSplitsWriteBetweenTwoPages:PASS
-
------------------------
-2 Tests 0 Failures 0 Ignored 
-OK

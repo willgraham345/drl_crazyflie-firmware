@@ -1,9 +1,0 @@
-test/utils/src/lighthouse/test_pulse_processor.c:15:testThatResultStructIsCleared:PASS
-test/utils/src/lighthouse/test_pulse_processor.c:29:testThatTsDiffReturnsDifference:PASS
-test/utils/src/lighthouse/test_pulse_processor.c:42:testThatTsDiffReturnsDifferenceWhenClocksWrap:PASS
-test/utils/src/lighthouse/test_pulse_processor.c:55:testThatTsDiffReturnsDifferenceWhenDifferenceWraps:PASS
-test/utils/src/lighthouse/test_pulse_processor.c:68:testThatTsAbsDiffGreaterThan:PASS
-
------------------------
-5 Tests 0 Failures 0 Ignored 
-OK

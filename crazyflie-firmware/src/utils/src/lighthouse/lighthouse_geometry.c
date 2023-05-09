@@ -100,7 +100,6 @@ static bool intersect_lines(vec3d orig1, vec3d vec1, vec3d orig2, vec3d vec2, ve
     return true;
 }
 
-// NOTE: The static origin1, and origin2 may need to be updated here to change with the turtlebot.
 bool lighthouseGeometryGetPositionFromRayIntersection(const baseStationGeometry_t* geo1, const baseStationGeometry_t* geo2, float angles1[2], float angles2[2], vec3d position, float *position_delta)
 {
     static vec3d ray1, ray2, origin1, origin2;
@@ -114,8 +113,6 @@ bool lighthouseGeometryGetPositionFromRayIntersection(const baseStationGeometry_
     return intersect_lines(origin1, ray1, origin2, ray2, position, position_delta);
 }
 
-
-// NOTE: This will need to be changed from a constant pointer to a dynamic pointer 
 void lighthouseGeometryGetBaseStationPosition(const baseStationGeometry_t* bs, vec3d baseStationPos) {
     // TODO: Make geometry adjustments within base station.
     vec3d rotated_origin_delta = {};
@@ -125,7 +122,6 @@ void lighthouseGeometryGetBaseStationPosition(const baseStationGeometry_t* bs, v
     // mat_mult(&source_rotation_matrix, &origin_vec, &origin_rotated_vec);
     baseStationGeometry_t* bs_unconst = (baseStationGeometry_t*)bs;
     arm_add_f32(bs_unconst->origin, rotated_origin_delta, baseStationPos, vec3d_size);
-    // arm_add_f32 is found in /drl_crazyflie-firmware/crazyflie-firmware/vendor/CMSIS/CMSIS/DSP/Source/BasicMathFunctions/arm_abs_f32.c
 }
 
 void lighthouseGeometryGetRay(const baseStationGeometry_t* baseStationGeometry, const float angleH, const float angleV, vec3d ray) {
@@ -169,10 +165,10 @@ void lighthouseGeometryGetSensorPosition(const vec3d cfPos, const arm_matrix_ins
 
   vec_add(cfPos, rotatedPos, pos);
 }
-// Note: LighthouseGeometryYawDelta is where the bitcraze guy directed us to look. This feeds into lighthouse_position_estimate.c
+
 bool lighthouseGeometryYawDelta(const vec3d ipv, const vec3d spv, const vec3d n, float* yawDelta) {
-    float spvn = vec_length(spv); // Length of sensor plane vector (vector between sensor planes)
-    float ipvn = vec_length(ipv); // Length of intersection plane vector (vector between intersection points)
+    float spvn = vec_length(spv);
+    float ipvn = vec_length(ipv);
 
     const float minIntersectionVectorLength = 0.0001f;
     if (ipvn < minIntersectionVectorLength) {

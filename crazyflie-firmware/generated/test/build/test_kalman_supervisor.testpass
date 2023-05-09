@@ -1,9 +1,0 @@
-test/modules/src/test_kalman_supervisor.c:17:testThatStationaryInOriginIsAccepted:PASS
-test/modules/src/test_kalman_supervisor.c:28:testThatPositionOutOfBoundsPositiveIsNotAccepted:PASS
-test/modules/src/test_kalman_supervisor.c:40:testThatPositionOutOfBoundsNegativeIsNotAccepted:PASS
-test/modules/src/test_kalman_supervisor.c:52:testThatVelocityOutOfBoundsPositiveIsNotAccepted:PASS
-test/modules/src/test_kalman_supervisor.c:64:testThatVelocityOutOfBoundsNegativeIsNotAccepted:PASS
-
------------------------
-5 Tests 0 Failures 0 Ignored 
-OK

@@ -1,5 +1,0 @@
-test/modules/src/kalman_core/test_mm_absolute_height.c:25:testThatCorrectValuesAreUsedInScalatUpdate:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK

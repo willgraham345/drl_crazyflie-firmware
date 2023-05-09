@@ -16,7 +16,7 @@ include = [
     "vendor/CMSIS/CMSIS/DSP/Include",
     "vendor/CMSIS/CMSIS/Core/Include",
 ]
-# Sources for the firmware build. arm_math.h is included in the firmware
+
 fw_sources = [
     'vendor/CMSIS/CMSIS/DSP/Source/BasicMathFunctions/arm_add_f32.c',
     'vendor/CMSIS/CMSIS/DSP/Source/BasicMathFunctions/arm_dot_prod_f32.c',
@@ -68,5 +68,7 @@ setup(
     name="cffirmware",
     version="1.0",
     cmdclass={"build": BuildCommand},
-    ext_modules=[cffirmware]
+    ext_modules=[cffirmware],
+    py_modules=["cffirmware"],
+    package_dir={"": "build"},
 )
