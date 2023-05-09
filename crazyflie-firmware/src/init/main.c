@@ -50,11 +50,9 @@ int main()
 
   // Initialize the platform.
   int err = platformInit();
-  if (err != 0)
-  {
+  if (err != 0){
     // The firmware is running on the wrong hardware. Halt
-    while (1)
-      ;
+    while (1);
   }
 
   // Launch the system task that will initialize and start everything
@@ -69,8 +67,7 @@ int main()
   ledSet(1, 1);
 
   // Should never reach this point!
-  while (1)
-    ;
+  while (1);
 
   return 0;
 }

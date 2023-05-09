@@ -84,8 +84,6 @@ static bool uartSynchronized = false;
 #define HALF_SECOND 500
 #define FIFTH_SECOND 200
 
-// #define CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH 1
-
 #ifdef CONFIG_DEBUG_LOG_ENABLE
 static STATS_CNT_RATE_DEFINE(serialFrameRate, ONE_SECOND);
 static STATS_CNT_RATE_DEFINE(frameRate, ONE_SECOND);

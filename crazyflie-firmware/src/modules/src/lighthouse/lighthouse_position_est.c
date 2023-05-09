@@ -41,8 +41,6 @@
 #include "lighthouse_geometry.h"
 #include "lighthouse_state.h"
 
-// #define CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH 1
-
 #define ONE_SECOND 1000
 #define HALF_SECOND 500
 static STATS_CNT_RATE_DEFINE(positionRate, ONE_SECOND);
@@ -214,14 +212,6 @@ static vec3d sensorDeckPositions[4] = {
     {SENSOR_POS_L, SENSOR_POS_W, 0.0},
     {SENSOR_POS_L, -SENSOR_POS_W, 0.0},
 };
-
-//This didn't work - dsd 4/28
-// static vec3d sensorDeckPositions[4] = {
-//     {-SENSOR_POS_L, -SENSOR_POS_W, 0.0},
-//     {-SENSOR_POS_L, SENSOR_POS_W, 0.0},
-//     {SENSOR_POS_L, -SENSOR_POS_W, 0.0},
-//     {SENSOR_POS_L, SENSOR_POS_W, 0.0},
-// };
 
 
 static positionMeasurement_t ext_pos;
