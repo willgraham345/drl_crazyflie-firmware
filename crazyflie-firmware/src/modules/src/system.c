@@ -169,7 +169,7 @@ bool systemTest()
 
 /* Private functions implementation */
 
-void systemTask(void *arg)
+void systemTask(void *arg) // I think this one is called from systemLaunch (line 107)
 {
   bool pass = true;
 

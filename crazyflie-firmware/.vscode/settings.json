@@ -7,5 +7,6 @@
     "files.associations": {
         "bootloader.h": "c",
         "stm32f4xx.h": "c"
-    }
+    },
+    "cortex-debug.variableUseNaturalFormat": true
 }
