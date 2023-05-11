@@ -41,6 +41,7 @@
 #include "lighthouse_geometry.h"
 #include "lighthouse_state.h"
 
+#include "debug.h"// edit: added for debug
 #define ONE_SECOND 1000
 #define HALF_SECOND 500
 static STATS_CNT_RATE_DEFINE(positionRate, ONE_SECOND);
@@ -326,10 +327,20 @@ static void estimatePositionSweepsLh1(const pulseProcessor_t* appState, pulsePro
 
 static void estimatePositionSweepsLh2(const pulseProcessor_t* appState, pulseProcessorResult_t* angles, int baseStation) {
   const lighthouseCalibration_t* bsCalib = &appState->bsCalibration[baseStation];
-  sweepAngleMeasurement_t sweepInfo;
+  // wc: This creates a read-only pointer, which points to baseStation geometry calibration data (basestation passed in as @param)
+  sweepAngleMeasurement_t sweepInfo; // wc: standard deviation sweep angles in LH2
   sweepInfo.stdDev = sweepStdLh2;
-  sweepInfo.rotorPos = &appState->bsGeometry[baseStation].origin;
+  sweepInfo.rotorPos = &appState->bsGeometry[baseStation].origin; 
   sweepInfo.rotorRot = &appState->bsGeometry[baseStation].mat;
+  DEBUG_PRINT("sweepInfo.rotorRot"); // wc:
+  for (int i = 0; i < 3; i++) 
+  {// wc:
+    DEBUG_PRINT("[%d]", i); //w: 
+    for (int j = 0; j < 3; j++)
+    {
+      DEBUG_PRINT("%d: %f\n", j, (double)*sweepInfo.rotorRot[i][j]);
+    }
+  }
   sweepInfo.rotorRotInv = &appState->bsGeoCache[baseStation].baseStationInvertedRotationMatrixes;
   sweepInfo.calibrationMeasurementModel = lighthouseCalibrationMeasurementModelLh2;
   sweepInfo.baseStationId = baseStation;
