@@ -46,52 +46,78 @@
 void appMain()
 {
   DEBUG_PRINT("This is the App layer example of the internal log param api...\n");
-  // logVarId_t idYaw = logGetVarId("lighthouse", "yaw");
-  // float yaw = 0.0f;
 
-  // paramVarId_t idEstimator = paramGetVarId("stabilizer", "estimator");
-  // uint8_t estimator_type = 0;
-  // paramVarId_t id_lighthousemethod = paramGetVarId("lighthouse", "method");
-  // uint8_t method = 2; (we're using Sweep in EKF)
+  //Lighthouse angles
+  logVarId_t id_rawAngle0xlh2 = logGetVarId("lightHouse", "rawAngle0xlh2");
+  float rawAngle0xlh2 = 0.0f;
+  logVarId_t id_rawAngle0ylh2 = logGetVarId("lightHouse", "rawAngle0ylh2");
+  float rawAngle0ylh2 = 0.0f;
+  logVarId_t id_rawAngle1xlh2 = logGetVarId("lightHouse", "rawAngle1xlh2");
+  float rawAngle1xlh2 = 0.0f;
+  logVarId_t id_rawAngle1ylh2 = logGetVarId("lightHouse", "rawAngle1ylh2");
+  float rawAngle1ylh2 = 0.0f;
 
-  // logVarId_t id_posRT = logGetVarId("lighthouse", "posRt")
-  // float posRt = 0.0f;
-  // logVarId_t id_rawAngle0ylh2 = logGetVarId("lighthouse", "rawAngle0ylh2");
-  // float rawAngle = 0.0f;
+  // Lighthouse estimations
+  logVarId_t id_x = logGetVarId("lightHouse", "x");
+  float x = 0.0f;
+  logVarId_t id_y = logGetVarId("lightHouse", "y");
+  float y = 0.0f;
+  logVarId_t id_z = logGetVarId("lightHouse", "z");
+  float z = 0.0f;
 
-  // logVarId_t id_lighthouseX = logGetVarId("lighthouse", "x");
-  // float x = 0.0f;
 
-  //we can use lighthouse 1 conventions for now, because it's easier to read
-  logVarId_t id_angle0x = logGetVarId("lighthouse", "angle0x");
-  float angle0x = 0.0f;
-  logVarId_t id_angle0y = logGetVarId("lighthouse", "angle0y");
-  float angle0y = 0.0f;
-  logVarId_t id_angle1x = logGetVarId("lighthouse", "angle1x");
-  float angle1x = 0.0f;
-  logVarId_t id_angle1y = logGetVarId("lighthouse", "angle1y");
-  float angle1y = 0.0f;
+  // Kalman Values
+  // logVarId_t id_stateZ = logGetVarId("kalman", "stateZ");
+  // float stateZ = 0.0f;
+  // logVarId_t id_q0 = logGetVarId("kalman", "q0");
+  // float q0 = 0.0f;
+  // logVarId_t id_q1 = logGetVarId("kalman", "q1");
+  // float q1 = 0.0f;
+  // logVarId_t id_q2 = logGetVarId("kalman", "q2");
+  // float q2 = 0.0f;
+  // logVarId_t id_q3 = logGetVarId("kalman", "q3");
+  // float q3 = 0.0f;
+  
+
+
 
   while(1) {
     vTaskDelay(M2T(2000));
     // Will's edits
     // Get the logging data
-    angle0x = logGetFloat(id_angle0x);
-    DEBUG_PRINT("angle0x is now: %f rad\n", (double)angle0x);
-    angle0y = logGetFloat(id_angle0y);
-    DEBUG_PRINT("angle0y is now: %f rad\n", (double)angle0y);
-    angle1x = logGetFloat(id_angle1x);
-    DEBUG_PRINT("angle1x is now: %f rad\n", (double)angle1x);
-    angle1y = logGetFloat(id_angle1y);
-    DEBUG_PRINT("angle1y is now: %f rad\n", (double)angle1y);
+
+    //Lighthouse data
+    rawAngle0xlh2 = logGetFloat(id_rawAngle0xlh2);
+    DEBUG_PRINT("rawAngle0xlh2 is now: %f \n", (double)rawAngle0xlh2);
+    rawAngle0ylh2 = logGetFloat(id_rawAngle0ylh2);
+    DEBUG_PRINT("rawAngle0ylh2 is now: %f \n", (double)rawAngle0ylh2);
+    rawAngle1xlh2 = logGetFloat(id_rawAngle1xlh2);
+    DEBUG_PRINT("rawAngle1xlh2 is now: %f \n", (double)rawAngle1xlh2);
+    rawAngle1ylh2 = logGetFloat(id_rawAngle1ylh2);
+    DEBUG_PRINT("rawAngle1ylh2 is now: %f \n", (double)rawAngle1ylh2);
+
+    // Lighthouse data
+    x = logGetFloat(id_x);
+    DEBUG_PRINT("x is now: %f m\n", (double)x);
+    y = logGetFloat(id_y);
+    DEBUG_PRINT("y is now: %f m\n", (double)y);
+    z = logGetFloat(id_z);
+    DEBUG_PRINT("z is now: %f m\n", (double)z);
     
 
-    // Get the logging data
-    // yaw = logGetFloat(idYaw);
-    // DEBUG_PRINT("Yaw is now: %f deg\n", (double)yaw);
-    // Get parameter value
-    // estimator_type = paramGetInt(idEstimator);
-    // DEBUG_PRINT("Estimator type is now: %d deg\n", estimator_type);
+    // Kalman data
+    // stateZ = logGetFloat(id_stateZ);
+    // DEBUG_PRINT("stateZ is now: %f m\n", (double)stateZ);
+    // q0 = logGetFloat(id_q0);
+    // DEBUG_PRINT("q0 is now: %f \n", (double)q0);
+    // q1 = logGetFloat(id_q1);
+    // DEBUG_PRINT("q1 is now: %f \n", (double)q1);
+    // q2 = logGetFloat(id_q2);
+    // DEBUG_PRINT("q2 is now: %f \n", (double)q2);
+    // q3 = logGetFloat(id_q3);
+    // DEBUG_PRINT("q3 is now: %f \n", (double)q3);
+
+    
 
 
     // Set a parameter value 
