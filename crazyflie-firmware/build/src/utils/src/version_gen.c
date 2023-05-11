@@ -32,16 +32,16 @@
 #include "config.h"
 #include "param.h"
 
-const char * V_SLOCAL_REVISION="0";
-const char * V_SREVISION="513c2815bf0a";
-const char * V_STAG="2023.02";
+const char * V_SLOCAL_REVISION="70";
+const char * V_SREVISION="39cf2a2bbb80";
+const char * V_STAG="2023.02 +70";
 const char * V_BRANCH="master";
 const bool V_MODIFIED=true;
 const bool V_PRODUCTION_RELEASE=false;
 
 /* Version recoverable from the ground */
-const uint32_t V_REVISION_0=0x513c2815;
-const uint16_t V_REVISION_1=0xbf0a;
+const uint32_t V_REVISION_0=0x39cf2a2b;
+const uint16_t V_REVISION_1=0xbb80;
 
 /**
  * Read-only parameters that describe the current quad firmware.
