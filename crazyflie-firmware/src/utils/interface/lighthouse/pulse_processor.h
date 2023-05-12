@@ -206,7 +206,7 @@ typedef struct {
   uint32_t ootxTimestamps[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
 } pulseProcessorV2_t;
 
-typedef struct pulseProcessor_s {
+typedef struct pulseProcessor_s { //wc: this is the only time the pulseProcessor_s is in this firmware, but I have no idea why. No headers, nothing. 
   bool receivedBsSweep[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
 
   union {
@@ -222,7 +222,7 @@ typedef struct pulseProcessor_s {
   ootxDecoderState_t ootxDecoder[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
   lighthouseCalibration_t bsCalibration[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
   baseStationGeometry_t bsGeometry[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
-  baseStationGeometryCache_t bsGeoCache[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS];
+  baseStationGeometryCache_t bsGeoCache[CONFIG_DECK_LIGHTHOUSE_MAX_N_BS]; //wc: holds baseStationInvertedRotationMatrixes, and lh1Rotor2RotationMatrixes, and lh1Rotor2InvertedRotationMatrixes
 
   // Health check data
   uint32_t healthFirstSensorTs;

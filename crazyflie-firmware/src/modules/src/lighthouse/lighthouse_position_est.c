@@ -330,8 +330,8 @@ static void estimatePositionSweepsLh2(const pulseProcessor_t* appState, pulsePro
   // wc: This creates a read-only pointer, which points to baseStation geometry calibration data (basestation passed in as @param)
   sweepAngleMeasurement_t sweepInfo; // wc: standard deviation sweep angles in LH2
   sweepInfo.stdDev = sweepStdLh2;
-  sweepInfo.rotorPos = &appState->bsGeometry[baseStation].origin; 
-  sweepInfo.rotorRot = &appState->bsGeometry[baseStation].mat;
+  sweepInfo.rotorPos = &appState->bsGeometry[baseStation].origin; //wc: bsGeometry is a pointer to the base station geometry calibration data
+  sweepInfo.rotorRot = &appState->bsGeometry[baseStation].mat; // wc: appState is a pulse_processor structure, holding the sweep data. bsGeometry is a pointer to the base station geometry calibration data
   DEBUG_PRINT("sweepInfo.rotorRot"); // wc:
   for (int i = 0; i < 3; i++) 
   {// wc:
@@ -341,23 +341,26 @@ static void estimatePositionSweepsLh2(const pulseProcessor_t* appState, pulsePro
       DEBUG_PRINT("%d: %f\n", j, (double)*sweepInfo.rotorRot[i][j]);
     }
   }
-  sweepInfo.rotorRotInv = &appState->bsGeoCache[baseStation].baseStationInvertedRotationMatrixes;
+  sweepInfo.rotorRotInv = &appState->bsGeoCache[baseStation].baseStationInvertedRotationMatrixes; //wc: updating baseStationInvertedRotationMatrix (held in baseStationGeometryCache_t)
+  //wc: not sure, but I think the baseStationInvertedrotationMatrix is referring to the inv(R_bs) that's present in https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/functional-areas/lighthouse/kalman_measurement_model/
   sweepInfo.calibrationMeasurementModel = lighthouseCalibrationMeasurementModelLh2;
   sweepInfo.baseStationId = baseStation;
 
   for (size_t sensor = 0; sensor < PULSE_PROCESSOR_N_SENSORS; sensor++) {
     sweepInfo.sensorId = sensor;
-    pulseProcessorSensorMeasurement_t* measurement = &angles->baseStationMeasurementsLh2[baseStation].sensorMeasurements[sensor];
+    //wc: pulseProcessorResult_t (angles) is a measurement that stores pulseProcessorBaseStationMeasurement_t along with the measurement type\
+    // it's angles, corrected angles and valid results. 
+    pulseProcessorSensorMeasurement_t* measurement = &angles->baseStationMeasurementsLh2[baseStation].sensorMeasurements[sensor]; //wc: grabbing measurements out from angles passed in
     if (measurement->validCount == PULSE_PROCESSOR_N_SWEEPS) {
       sweepInfo.sensorPos = &sensorDeckPositions[sensor];
 
       sweepInfo.measuredSweepAngle = measurement->angles[0];
       if (sweepInfo.measuredSweepAngle != 0) {
-        sweepInfo.t = -t30;
-        sweepInfo.calib = &bsCalib->sweep[0];
-        sweepInfo.sweepId = 0;
+        sweepInfo.t = -t30; //wc: referencing the tilt of the lighthouse planes (not sure how much this will help)
+        sweepInfo.calib = &bsCalib->sweep[0]; //wc: TODO: we'll need to change this to do 
+        sweepInfo.sweepId = 0; 
         #ifndef CONFIG_DECK_LIGHTHOUSE_AS_GROUNDTRUTH
-          estimatorEnqueueSweepAngles(&sweepInfo);
+          estimatorEnqueueSweepAngles(&sweepInfo); //wc: enqueue adds to tail of queue (fifo) [need to understand this more]
         #endif
         STATS_CNT_RATE_EVENT(bsEstRates[baseStation]);
         STATS_CNT_RATE_EVENT(&positionRate);

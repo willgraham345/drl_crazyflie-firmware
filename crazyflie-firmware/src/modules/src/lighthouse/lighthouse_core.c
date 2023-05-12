@@ -577,7 +577,7 @@ void lighthouseCoreTask(void *param) {
 
 void lighthouseCoreSetCalibrationData(const uint8_t baseStation, const lighthouseCalibration_t* calibration) {
   if (baseStation < CONFIG_DECK_LIGHTHOUSE_MAX_N_BS) {
-    lighthouseCoreState.bsCalibration[baseStation] = *calibration;
+    lighthouseCoreState.bsCalibration[baseStation] = *calibration; // wc: ligthouseCoreState declaration here, 
     lighthousePositionCalibrationDataWritten(baseStation);
   }
 }

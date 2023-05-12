@@ -5,8 +5,8 @@
 #include "stabilizer_types.h"
 
 typedef struct {
-  __attribute__((aligned(4))) vec3d origin;
-  __attribute__((aligned(4))) mat3d mat;
+  __attribute__((aligned(4))) vec3d origin; //wc: vector
+  __attribute__((aligned(4))) mat3d mat; //wc: matrix (rotation matrix?)
   bool valid;
 } __attribute__((packed)) baseStationGeometry_t;
 
