@@ -363,11 +363,12 @@ void locSrvSendRangeFloat(uint8_t id, float range)
 #ifdef CONFIG_DECK_LIGHTHOUSE
 void locSrvSendLighthouseAngle(int baseStation, pulseProcessorResult_t* angles)
 {
-  anglePacket *ap = (anglePacket *)LhAngle.data;
+  anglePacket *ap = (anglePacket *)LhAngle.data; //wc: creates angle packet pointer to where LhAngle.data is stored. 
 
   if (enableLighthouseAngleStream) {
     ap->baseStation = baseStation;
     pulseProcessorBaseStationMeasurement_t* baseStationMeasurement = &angles->baseStationMeasurementsLh1[baseStation];
+    //wc: This has the angles, corrected angles, and valid within it. 
 
     for(uint8_t its = 0; its < NBR_OF_SWEEPS_IN_PACKET; its++) {
       float angle_first_sensor =  baseStationMeasurement->sensorMeasurements[0].correctedAngles[its];

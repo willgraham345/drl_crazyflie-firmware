@@ -561,7 +561,7 @@ void lighthouseCoreTask(void *param) {
 
         deckHealthCheck(&lighthouseCoreState, &frame, now_ms);
         lighthouseUpdateSystemType();
-        if (pulseProcessorProcessPulse) {
+        if (pulseProcessorProcessPulse) { //wc: This is a function pointer boolean calling pulseProcessorV2ProcessPulse, which returns a boolean.
           processFrame(&lighthouseCoreState, &angles, &frame, now_ms);
         }
       }

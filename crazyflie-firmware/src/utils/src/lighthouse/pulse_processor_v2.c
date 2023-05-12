@@ -251,6 +251,7 @@ static void calculateAngles(const pulseProcessorV2SweepBlock_t* latestBlock, con
         uint32_t firstOffset = previousBlock->offset[i];
         uint32_t secondOffset = latestBlock->offset[i];
         uint32_t period = CYCLE_PERIODS[channel];
+        //wc: M_PI_F is a pi in float. 
 
         float firstBeam = (firstOffset * 2 * M_PI_F / period) - M_PI_F + M_PI_F / 3.0f;
         float secondBeam = (secondOffset * 2 * M_PI_F / period) - M_PI_F - M_PI_F / 3.0f;
