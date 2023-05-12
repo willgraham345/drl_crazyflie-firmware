@@ -332,15 +332,15 @@ static void estimatePositionSweepsLh2(const pulseProcessor_t* appState, pulsePro
   sweepInfo.stdDev = sweepStdLh2;
   sweepInfo.rotorPos = &appState->bsGeometry[baseStation].origin; //wc: bsGeometry is a pointer to the base station geometry calibration data
   sweepInfo.rotorRot = &appState->bsGeometry[baseStation].mat; // wc: appState is a pulse_processor structure, holding the sweep data. bsGeometry is a pointer to the base station geometry calibration data
-  DEBUG_PRINT("sweepInfo.rotorRot"); // wc:
-  for (int i = 0; i < 3; i++) 
-  {// wc:
-    DEBUG_PRINT("[%d]", i); //w: 
-    for (int j = 0; j < 3; j++)
-    {
-      DEBUG_PRINT("%d: %f\n", j, (double)*sweepInfo.rotorRot[i][j]);
-    }
-  }
+  // DEBUG_PRINT("sweepInfo.rotorRot"); // wc:
+  // for (int i = 0; i < 3; i++) 
+  // {// wc:
+  //   DEBUG_PRINT("[%d]", i); //w: 
+  //   for (int j = 0; j < 3; j++)
+  //   {
+  //     DEBUG_PRINT("%d: %f\n", j, (double)*sweepInfo.rotorRot[i][j]);
+  //   }
+  // }
   sweepInfo.rotorRotInv = &appState->bsGeoCache[baseStation].baseStationInvertedRotationMatrixes; //wc: updating baseStationInvertedRotationMatrix (held in baseStationGeometryCache_t)
   //wc: not sure, but I think the baseStationInvertedrotationMatrix is referring to the inv(R_bs) that's present in https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/functional-areas/lighthouse/kalman_measurement_model/
   sweepInfo.calibrationMeasurementModel = lighthouseCalibrationMeasurementModelLh2;
@@ -348,7 +348,7 @@ static void estimatePositionSweepsLh2(const pulseProcessor_t* appState, pulsePro
 
   for (size_t sensor = 0; sensor < PULSE_PROCESSOR_N_SENSORS; sensor++) {
     sweepInfo.sensorId = sensor;
-    //wc: pulseProcessorResult_t (angles) is a measurement that stores pulseProcessorBaseStationMeasurement_t along with the measurement type\
+    //wc: pulseProcessorResult_t (angles) is a measurement that stores pulseProcessorBaseStationMeasurement_t along with the measurement type
     // it's angles, corrected angles and valid results. 
     pulseProcessorSensorMeasurement_t* measurement = &angles->baseStationMeasurementsLh2[baseStation].sensorMeasurements[sensor]; //wc: grabbing measurements out from angles passed in
     if (measurement->validCount == PULSE_PROCESSOR_N_SWEEPS) {

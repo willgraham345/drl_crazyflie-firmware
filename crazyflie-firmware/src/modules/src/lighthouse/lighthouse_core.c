@@ -527,7 +527,7 @@ void lighthouseCoreTask(void *param) {
   lighthouseStorageInitializeGeoDataFromStorage();
   lighthouseStorageInitializeCalibDataFromStorage();
 
-  if (lighthouseDeckFlasherCheckVersionAndBoot() == false) {
+  if (lighthouseDeckFlasherCheckVersionAndBoot() == false) { //wc: This is where we were having issues with debugger. This was tripping a false negative, meaning lighthouse functions were never called. 
     DEBUG_PRINT("FPGA not booted. Lighthouse disabled!\n");
     while(1) {
       vTaskDelay(portMAX_DELAY);
