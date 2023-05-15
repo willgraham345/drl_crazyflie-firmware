@@ -1,2 +1,4 @@
+- calls -> **[[pulseProcessorClearOutdated]]**(appState, angles, baseStation)
 - calls -> **[[lighthousePositionEstimatePoseSweeps]]**(appState, angles, baseStation)
-
+- calls -> **[[pulseProcessorProcessed]]**(angles, baseStation) twice
+	- Calls it once with the baseStation and again with otherBaseStation

@@ -1,0 +1,6 @@
+- calls -> **systemWaitStart**()
+- calls -> **updateQueuedMeasurements**(nowMs, quadIsFlying)
+- nowMs = getting tick count
+- calls -> **rateSupervisorInit**()
+- calls -> **kalmanCoreAddProcessNoise**()
+- calls -> **[[updateQueuedMeasurements]]**(nowMs, quadIsFlying)

@@ -1,3 +1,4 @@
-- calls -> **[[estimatePositionSweeps]]**(state, angles, baseStation)
+If state is valid: 
+-  calls -> **[[estimatePositionSweeps]]**(state, angles, baseStation)
 
 - calls -> **[[estimateYaw]]**(state, angles, baseStation)

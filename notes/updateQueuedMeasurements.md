@@ -1,0 +1,6 @@
+- instantiates a [[measurement_t]] variable `m`
+- calls -> **[[kalmanCoreUpdateWithSweepAngles]]**(`&coreData, &m.data.sweepAngle, nowMs, &sweepOutlierFilterState`)
+	- `&coreData` is the internally estimated state: x, y, z, px py pz (velocity) and attitude error (D0 d1 D2)
+	- Refers to two papers:
+		- https://ieeexplore.ieee.org/document/7139421?arnumber=7139421
+		- https://arc.aiaa.org/doi/abs/10.2514/1.G000848
