@@ -7,10 +7,11 @@
     - calls -> **pulseProcessorV2ProcessPulse**() using function pointer **pulseProcessorProcessPulse**, to determine if it should call processFrame below. 
         - interface which writes angle, base station, and axis. 
         - calls -> **handleCalibrationData**(state, frameData)
+            - Pretty sure all this does is make sure you don't have noisy data
         - calls -> **handleAngles**(state, frameData, angles, basestation, axis)
             - calls -> **processFrame**(), notbut the testable static kind (second function) 
             - Check if block is larger than a given delta
-            - calls -> **calculateAngles(latestBlock, previousBlock, angles)
+            - calls -> **calculateAngles**(latestBlock, previousBlock, angles)
                 - blocks are pulseProcessorV2SweepBlock_t, addresed to state blocks 
 - calls -> **processFrame**(&lighthouseCoreState, &angles, &frame, now_ms)
     - calls -> **pulseProcessorProcessPulse**(appState, frame, angles, basestation, sweepId(first or second sweep), calibDataIsDecoded)

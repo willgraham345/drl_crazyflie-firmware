@@ -10,8 +10,9 @@
         - calls -> **handleAngles**(state, frameData, angles, basestation, axis)
             - calls -> **processFrame**(), notbut the testable static kind (second function) 
             - Check if block is larger than a given delta
-            - calls -> **calculateAngles(latestBlock, previousBlock, angles)
+            - calls -> **calculateAngles**(latestBlock, previousBlock, angles)
                 - blocks are pulseProcessorV2SweepBlock_t, addresed to state blocks 
+                - It assigns the angles right here, but I think the actual work is done within the kalman filter. 
 - calls -> **processFrame**(&lighthouseCoreState, &angles, &frame, now_ms)
     - calls -> **pulseProcessorProcessPulse**(appState, frame, angles, basestation, sweepId(first or second sweep), calibDataIsDecoded)
         - calls -> handleCalibrationData(state, frameData)
