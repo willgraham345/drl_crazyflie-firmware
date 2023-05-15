@@ -1,0 +1,1 @@
+- calls -> **[[pulseProcessorV2ProcessPulse]]**() using function pointer **pulseProcessorProcessPulse**, to determine if it should call processFrame below.

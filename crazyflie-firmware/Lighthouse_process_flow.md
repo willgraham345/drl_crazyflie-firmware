@@ -7,6 +7,7 @@
     - calls -> **pulseProcessorV2ProcessPulse**() using function pointer **pulseProcessorProcessPulse**, to determine if it should call processFrame below. 
         - interface which writes angle, base station, and axis. 
         - calls -> **handleCalibrationData**(state, frameData)
+                - Pretty sure all this does is clean up some stuff, and make sure data isn't too noisy
         - calls -> **handleAngles**(state, frameData, angles, basestation, axis)
             - calls -> **processFrame**(), notbut the testable static kind (second function) 
             - Check if block is larger than a given delta
@@ -22,7 +23,6 @@
             - checks if calibrationData is valid (`calibrationData = &state->bsCalibration[baseStation]`)
                 - if false, calls -> **lighthoueCalibrationApplyV2()**
                     - calls **lighthouseCalibrationApply**(calib, rawAngles, correctedAngles, idealtoDistortedV2)
-                    - Pretty sure all this does is clean up some stuff, and make sure data isn't too noisy
         - calls -> **locSrvSendLighthouseAngle**(baseStation, angles);
             - creates and initializes angle packet, and then handles sending it somewhere?
 
