@@ -10,3 +10,6 @@
 	- puts this in the sweepInfo.calibrationMeasurementModel field. 
 		- This does a few of the calculations on kalmanmeasurementmodel, specifically the $\alpha_p$ angle
 	- This isn't called again within the funciton. It sets up how to do things, but never calls it again. 
+- sets sweepInfo.sensorPos as sensorDeckPositions
+	- Used in [[kalmanCoreUpdateWithSweepAngles]]
+- 

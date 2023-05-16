@@ -3,6 +3,11 @@ The light plane is offset by ${-\pi/6}$ (first is positive, second is negative),
 ---- 
 
 No subscript means that it's within the global frame 
+### Rotation Matrices
+$$ R_{r}\cdot v_r = v$$
+$$ R_{bs}\cdot v_bs = v$$
+$$ R_{cf}\cdot v_{cf} = v$$
+
 
 --- 
 ##### Crazyflie Rotation Matrix 

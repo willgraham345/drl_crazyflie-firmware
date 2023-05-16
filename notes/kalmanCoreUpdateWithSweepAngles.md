@@ -1,14 +1,49 @@
 
 # Process Flow
-1. Intialize variaables
-	1. s
-	2. R_cf
-	3. scf_
-	4. s
-	5. 
+1. Intialize variables
+	1. `s` (vec3d, 3x3 from coreData)
+	2. `R_cf` (arm_marix_instance_32)
+	3. `scf_` (arm_marix_instance_32)
+	4. `s` (arm_marix_instance_32) 
+		1. Is the matrix multiplication of `R_cf` and `s_cf`
+		2. This is the sensor position $s$
+2. Initialize $p_{cf}$ and add $s$ to it
+	1. from [[kalman_core.h]], gets out the x, y and z, while adding the `s` term from before
+3. Creates $p_r$ as `pr`, from `sweepInfo->rotorPos`
+4. Creates `stmp_`
+	1. 3x1 matrix
+	2. difference between $p_{cf}$ and `*pr`, which is the difference between the crazyflie positon and the rotor position.
+		1. Might be  $p_{bs}$ ?
+5. Creates `sr`
+	1. Makes `Rr_inv_` based on sweepInfo -> rotorRotInv 
+	2. Makes `sr_` which has `sr` passed in.
+	3. `sr_` is the matriix multiplication of `Rr_inv_ ` and `stmp_`
+6. Calls [[lighthouseCalibrationMeasurementModelLh2]] as a function pointer
+7. Generates `predictedSweepAngle`, `measuredSweeepAngle`, and `error`
 
----
+Calls `outlierFilterLighthouseValidateSweep()` which calculates the `H` vector.
+- The `H` vector is a partial derivative of the sweep angle on the $(x, y, z)$ within the rotor's reference frame.  
 
+
+# Data types of variables
+`this`
+* [[kalmanCoredata_t]] (within kalman_core.h)
+	* `q` = attitude quaternion
+	* `S` = internally estimated state (xyz, velocity, attitude error)
+	* `R` = quad's attitude rotation matrix
+- [[sweepAngleMeasurement_t]]
+	- [[sensorPos]] = sensor position in CF reference frame
+		- set in [[estimatePositionSweepsLh2]] with sensorDeckPositions
+		- There's no way here to flip it. It's only the orientationon the xy plane.
+	- rotorPos = position of rotor in global frame
+	- rotorRot = $R_r$
+	- rotorRotInv = $R_r^{-1}$
+	- [[lighthouseCalibrationSweep_t]]* calib;
+	- [[lighthouseCalibrationMeasurementModel_t]]
+
+
+# Other stuff
+--- 
  Refers to two papers:
 		- https://ieeexplore.ieee.org/document/7139421?arnumber=7139421
 		- https://arc.aiaa.org/doi/abs/10.2514/1.G000848 
@@ -21,3 +56,5 @@
 	- Refers to two papers:
 		- https://ieeexplore.ieee.org/document/7139421?arnumber=7139421
 		- https://arc.aiaa.org/doi/abs/10.2514/1.G000848
+
+---

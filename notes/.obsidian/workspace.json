@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "497822215c8f2127",
+        "id": "1b1fb3c1adbd27af",
         "type": "tabs",
         "children": [
           {
@@ -18,12 +18,25 @@
             }
           },
           {
-            "id": "7234bcb0960fcf72",
+            "id": "1e9396673a03f680",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Kalman Task.md",
+                "file": "2023-05-16.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "20bade551bc0da89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "estimatePositionSweepsLh2.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -44,40 +57,7 @@
             }
           }
         ],
-        "currentTab": 1
-      },
-      {
-        "id": "1b1fb3c1adbd27af",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1e9396673a03f680",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "kalmanCoreUpdateWithSweepAngles.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "41a4502a8a97ebae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-05-15.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -127,7 +107,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "1deda4af82515fd9",
@@ -143,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-05-15.md",
+                "file": "kalmanCoreUpdateWithSweepAngles.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-05-15.md",
+                "file": "kalmanCoreUpdateWithSweepAngles.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-05-15.md"
+                "file": "kalmanCoreUpdateWithSweepAngles.md"
               }
             }
           }
@@ -206,23 +187,28 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "41a4502a8a97ebae",
+  "active": "defd91241de9c350",
   "lastOpenFiles": [
-    "kalmanCoreUpdateWithSweepAngles.md",
-    "2023-05-15.md",
-    "lighthouseCalibrationMeasurementModelLh2.md",
-    "Kalman Task.md",
-    "updateQueuedMeasurements.md",
-    "measurement_t.md",
-    "Lighthouse Kalman Measurement Model.md",
     "estimatePositionSweepsLh2.md",
+    "kalmanCoreUpdateWithSweepAngles.md",
+    "[kalmanCoreUpdateWithSweepAngles.md",
+    "lighthouseCalibrationSweep_t.md",
+    "Lighthouse Kalman Measurement Model.md",
+    "2023-05-16.md",
+    "Untitled.md",
+    "Kalman Task.md",
+    "lighthouseCalibrationMeasurementModelLh2.md",
+    "kalman_core.h.md",
+    "processFrame.md",
+    "measurement_t.md",
+    "2023-05-15.md",
+    "updateQueuedMeasurements.md",
     "pulseProcessor_t.md",
     "usePulseResult.md",
     "lighthoueCalibrationApplyV2.md",
     "pulseProcessorProcessed.md",
     "estimatePositionSweeps.md",
     "lighthousePositionEstimatePoseSweeps.md",
-    "processFrame.md",
     "usePulseResultsSweeps.md",
     "pulseProcessorClearOutdated.md",
     "locSrvSendLighthouseAngle.md",
@@ -230,11 +216,6 @@
     "convertV2AnglestoV1Angles.md",
     "Untitled",
     "calculateAngles.md",
-    "Lighthouse Process Flow.md",
-    "lighthouseCoreTask.md",
-    "useCalibrationData.md",
-    "pulseProcessorApplyCalibration.md",
-    "lighthouseCalibrationApply.md",
     "Untitled.canvas"
   ]
 }

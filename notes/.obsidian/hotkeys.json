@@ -58,7 +58,6 @@
       "key": "T"
     }
   ],
-  "app:go-forward": [],
   "editor:focus-left": [
     {
       "modifiers": [
@@ -77,13 +76,28 @@
       "key": "ArrowRight"
     }
   ],
-  "app:go-back": [],
   "obsidian-editor-shortcuts:deleteLine": [
     {
       "modifiers": [
         "Mod"
       ],
       "key": "Backspace"
+    }
+  ],
+  "app:go-back": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowLeft"
+    }
+  ],
+  "app:go-forward": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowRight"
     }
   ]
 }

@@ -23,12 +23,18 @@
  *
  */
 
+
+//wc: edits
+#include "debug.h"
+
 #include "mm_sweep_angles.h"
 
 
 void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasurement_t *sweepInfo, const uint32_t nowMs, OutlierFilterLhState_t* sweepOutlierFilterState) {
   // Rotate the sensor position from CF reference frame to global reference frame,
   // using the CF roatation matrix
+
+  //wc: this = kalmanCoreData_t
   vec3d s;
   arm_matrix_instance_f32 Rcf_ = {3, 3, (float32_t *)this->R};
   arm_matrix_instance_f32 scf_ = {3, 1, (float32_t *)*sweepInfo->sensorPos};
@@ -54,7 +60,7 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   const float x = sr[0];
   const float y = sr[1];
   const float z = sr[2];
-  const float t = sweepInfo->t;
+  const float t = sweepInfo->t; //wc: t = tilt angle of the sweep
   const float tan_t = tanf(t);
 
   const float r2 = x * x + y * y;
