@@ -1,1 +1,3 @@
 - Does the yaw estimation outside of the estimator. 
+- grabs data from the kalman filter.
+	- 

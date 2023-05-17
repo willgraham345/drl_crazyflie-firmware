@@ -28,6 +28,11 @@
 
 
 void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasurement_t *sweepInfo, const uint32_t nowMs, OutlierFilterLhState_t* sweepOutlierFilterState) {
+  point_t cfPosP; //wc: added for logging
+  vec3d cfPos = {cfPosP.x, cfPosP.y, cfPosP.z}; //wc: added for logging
+  
+  
+  
   // Rotate the sensor position from CF reference frame to global reference frame,
   // using the CF roatation matrix
   vec3d s;
@@ -39,6 +44,10 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   //wc: edit for logging
   // float32_t* s_data = s_.pData;
   // DEBUG_PRINT("s_data: %f, %f, %f\n", (double)s_data[0], (double)s_data[1], (double)s_data[2]);
+  DEBUG_PRINT("cfPos1: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
+
+  //wc: print kalman position estimations
+  
 
   // Get the current state values of the position of the crazyflie (global reference frame) and add the relative sensor pos
   vec3d pcf = {this->S[KC_STATE_X] + s[0], this->S[KC_STATE_Y] + s[1], this->S[KC_STATE_Z] + s[2]};
