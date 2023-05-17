@@ -89,8 +89,12 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
       vec3d g;
       arm_matrix_instance_f32 gr_ = {3, 1, gr};
       arm_matrix_instance_f32 Rr_ = {3, 3, (float32_t *)(*sweepInfo->rotorRot)};
-      arm_matrix_instance_f32 g_ = {3, 1, g};
+      arm_matrix_instance_f32 g_ = {3, 1, g}; 
       mat_mult(&Rr_, &gr_, &g_);
+      //wc: edit for logging
+      float32_t* g_data = g_.pData;
+      DEBUG_PRINT("g_: %f, %f, %f\n", (double)g_data[0], (double)g_data[1], (double)g_data[2]); //wc:edit
+
 
       float h[KC_STATE_DIM] = {0};
       h[KC_STATE_X] = g[0];

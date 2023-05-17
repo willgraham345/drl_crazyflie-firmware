@@ -22,6 +22,8 @@
 6. Calls [[lighthouseCalibrationMeasurementModelLh2]] as a function pointer
 7. Generates `predictedSweepAngle`, `measuredSweeepAngle`, and `error`
 8. calls outlierFilterLighthouseValidateSweep(), which makes sure nothing is over a threshhold and time delay. 
+9. Creates an `H` vector 
+	1. This is likely the observation matrix
 
 Calls `outlierFilterLighthouseValidateSweep()` which calculates the `H` vector.
 - The `H` vector is a partial derivative of the sweep angle on the $(x, y, z)$ within the rotor's reference frame.  

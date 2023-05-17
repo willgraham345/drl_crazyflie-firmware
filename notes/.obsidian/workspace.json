@@ -13,7 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "kalmanCoreUpdateWithSweepAngles.md",
+                "file": "estimateYaw.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d1c38f074459ca8f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lighthouseGeometryYawDelta.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -92,13 +105,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "1deda4af82515fd9",
@@ -114,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kalmanCoreUpdateWithSweepAngles.md",
+                "file": "estimateYaw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kalmanCoreUpdateWithSweepAngles.md",
+                "file": "estimateYaw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kalmanCoreUpdateWithSweepAngles.md"
+                "file": "estimateYaw.md"
               }
             }
           },
@@ -187,19 +198,19 @@
   },
   "active": "1ab0493a475f0757",
   "lastOpenFiles": [
-    "estimatePositionSweepsLh2.md",
+    "lighthousePositionEstimatePoseSweeps.md",
     "kalmanCoreUpdateWithSweepAngles.md",
+    "lighthouseGeometryYawDelta.md",
+    "estimatePositionSweepsLh2.md",
     "2023-05-17.md",
     "lighthouseCalibrationMeasurementModel_t.md",
     "sweepAngleMeasurement_t.md",
-    "lighthousePositionEstimatePoseSweeps.md",
     "Lighthouse Kalman Measurement Model.md",
     "estimateYaw.md",
     "2023-05-16.md",
     "Untitled.canvas",
     "[kalmanCoreUpdateWithSweepAngles.md",
     "lighthouseCalibrationSweep_t.md",
-    "Untitled.md",
     "Kalman Task.md",
     "lighthouseCalibrationMeasurementModelLh2.md",
     "kalman_core.h.md",
