@@ -25,11 +25,14 @@
 
 #include "mm_sweep_angles.h"
 #include "debug.h"
+#include "estimator_kalman.h"
 
 
 void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasurement_t *sweepInfo, const uint32_t nowMs, OutlierFilterLhState_t* sweepOutlierFilterState) {
-  point_t cfPosP; //wc: added for logging
-  vec3d cfPos = {cfPosP.x, cfPosP.y, cfPosP.z}; //wc: added for logging
+  // point_t cfPosP; //wc: added for logging
+  // estimatorKalmanGetEstimatedPos(&cfPosP);
+  // vec3d cfPos = {cfPosP.x, cfPosP.y, cfPosP.z}; //wc: added for logging
+  // DEBUG_PRINT("cfPos1: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
   
   
   
@@ -44,7 +47,8 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   //wc: edit for logging
   // float32_t* s_data = s_.pData;
   // DEBUG_PRINT("s_data: %f, %f, %f\n", (double)s_data[0], (double)s_data[1], (double)s_data[2]);
-  DEBUG_PRINT("cfPos1: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
+  // estimatorKalmanGetEstimatedPos(&cfPosP);
+  // DEBUG_PRINT("cfPos2: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
 
   //wc: print kalman position estimations
   
@@ -58,7 +62,10 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   const vec3d* pr = sweepInfo->rotorPos;
   vec3d stmp = {pcf[0] - (*pr)[0], pcf[1] - (*pr)[1], pcf[2] - (*pr)[2]};
   arm_matrix_instance_f32 stmp_ = {3, 1, stmp};
-
+  
+  //wc: edit for logging
+  // estimatorKalmanGetEstimatedPos(&cfPosP);
+  // DEBUG_PRINT("cfPos3: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
   // DEBUG_PRINT("stmp: %f, %f, %f\n", (double)stmp[0], (double)stmp[1], (double)stmp[2]); //wc:edit
 
   // Rotate the difference in position to the rotor reference frame,
@@ -67,6 +74,10 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   arm_matrix_instance_f32 Rr_inv_ = {3, 3, (float32_t *)(*sweepInfo->rotorRotInv)};
   arm_matrix_instance_f32 sr_ = {3, 1, sr};
   mat_mult(&Rr_inv_, &stmp_, &sr_);
+
+  //wc: logging
+  // estimatorKalmanGetEstimatedPos(&cfPosP);
+  // DEBUG_PRINT("cfPos4: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
   // float32_t* sr_data = sr_.pData;
   // DEBUG_PRINT("sr: %f, %f, %f\n", (double)sr_data[0], (double)sr_data[1], (double)sr_data[2]); //wc:edit
 
@@ -85,6 +96,13 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   const float error = measuredSweepAngle - predictedSweepAngle;
 
   if (outlierFilterLighthouseValidateSweep(sweepOutlierFilterState, r, error, nowMs)) {
+    //wc: edits
+    point_t cfPosP; //wc: added for logging
+    estimatorKalmanGetEstimatedPos(&cfPosP);
+    vec3d cfPos = {cfPosP.x, cfPosP.y, cfPosP.z}; //wc: added for logging
+    // DEBUG_PRINT("cfPos5: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
+  
+
     // Calculate H vector (in the rotor reference frame)
     const float z_tan_t = z * tan_t;
     const float qNum = r2 - z_tan_t * z_tan_t;
@@ -101,8 +119,10 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
       arm_matrix_instance_f32 g_ = {3, 1, g}; 
       mat_mult(&Rr_, &gr_, &g_);
       //wc: edit for logging
-      float32_t* g_data = g_.pData;
-      DEBUG_PRINT("g_: %f, %f, %f\n", (double)g_data[0], (double)g_data[1], (double)g_data[2]); //wc:edit
+      // float32_t* g_data = g_.pData;
+      // DEBUG_PRINT("g_: %f, %f, %f\n", (double)g_data[0], (double)g_data[1], (double)g_data[2]); //wc:edit
+      // estimatorKalmanGetEstimatedPos(&cfPosP);
+      // DEBUG_PRINT("cfPos6: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
 
 
       float h[KC_STATE_DIM] = {0};
@@ -110,8 +130,14 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
       h[KC_STATE_Y] = g[1];
       h[KC_STATE_Z] = g[2];
 
+      //wc: edit for logging
+      estimatorKalmanGetEstimatedPos(&cfPosP);
+      DEBUG_PRINT("cfPos7: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
+
       arm_matrix_instance_f32 H = {1, KC_STATE_DIM, h};
       kalmanCoreScalarUpdate(this, &H, error, sweepInfo->stdDev);
+      estimatorKalmanGetEstimatedPos(&cfPosP);
+      DEBUG_PRINT("cfPos8: %f, %f, %f\n", (double)cfPos[0], (double)cfPos[1], (double)cfPos[2]);
     }
   }
 }
