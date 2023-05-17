@@ -1,14 +1,15 @@
-
+****
 # Process Flow
 1. Intialize variables
-	1. `s` (vec3d, 3x3 from coreData)
+	1. `s` (vec3d, 3x1 from coreData)
 	2. `R_cf` (arm_marix_instance_32)
 	3. `scf_` (arm_marix_instance_32)
-	4. `s` (arm_marix_instance_32) 
+	4. `s_` (arm_marix_instance_32) 
 		1. Is the matrix multiplication of `R_cf` and `s_cf`
-		2. This is the sensor position $s$
+		2. 
 2. Initialize $p_{cf}$ and add $s$ to it
 	1. from [[kalman_core.h]], gets out the x, y and z, while adding the `s` term from before
+		1. This is where  `s` is calculated
 3. Creates $p_r$ as `pr`, from `sweepInfo->rotorPos`
 4. Creates `stmp_`
 	1. 3x1 matrix
@@ -20,6 +21,7 @@
 	3. `sr_` is the matriix multiplication of `Rr_inv_ ` and `stmp_`
 6. Calls [[lighthouseCalibrationMeasurementModelLh2]] as a function pointer
 7. Generates `predictedSweepAngle`, `measuredSweeepAngle`, and `error`
+8. calls outlierFilterLighthouseValidateSweep(), which makes sure nothing is over a threshhold and time delay. 
 
 Calls `outlierFilterLighthouseValidateSweep()` which calculates the `H` vector.
 - The `H` vector is a partial derivative of the sweep angle on the $(x, y, z)$ within the rotor's reference frame.  
@@ -45,8 +47,10 @@ Calls `outlierFilterLighthouseValidateSweep()` which calculates the `H` vector.
 # Other stuff
 --- 
  Refers to two papers:
-		- https://ieeexplore.ieee.org/document/7139421?arnumber=7139421
-		- https://arc.aiaa.org/doi/abs/10.2514/1.G000848 
+- https://ieeexplore.ieee.org/document/7139421?arnumber=7139421
+- https://arc.aiaa.org/doi/abs/10.2514/1.G000848 
+Crazyflie website:
+- https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/functional-areas/lighthouse/kalman_measurement_model/
 
 ---
 

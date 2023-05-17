@@ -23,31 +23,34 @@
  *
  */
 
-
-//wc: edits
-#include "debug.h"
-
 #include "mm_sweep_angles.h"
+#include "debug.h"
 
 
 void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasurement_t *sweepInfo, const uint32_t nowMs, OutlierFilterLhState_t* sweepOutlierFilterState) {
   // Rotate the sensor position from CF reference frame to global reference frame,
   // using the CF roatation matrix
-
-  //wc: this = kalmanCoreData_t
   vec3d s;
   arm_matrix_instance_f32 Rcf_ = {3, 3, (float32_t *)this->R};
   arm_matrix_instance_f32 scf_ = {3, 1, (float32_t *)*sweepInfo->sensorPos};
   arm_matrix_instance_f32 s_ = {3, 1, s};
   mat_mult(&Rcf_, &scf_, &s_);
 
+  //wc: edit for logging
+  // float32_t* s_data = s_.pData;
+  // DEBUG_PRINT("s_data: %f, %f, %f\n", (double)s_data[0], (double)s_data[1], (double)s_data[2]);
+
   // Get the current state values of the position of the crazyflie (global reference frame) and add the relative sensor pos
   vec3d pcf = {this->S[KC_STATE_X] + s[0], this->S[KC_STATE_Y] + s[1], this->S[KC_STATE_Z] + s[2]};
+
+  // DEBUG_PRINT("pcf: %f, %f, %f\n", (double)pcf[0], (double)pcf[1], (double)pcf[2]); //wc:edit
 
   // Calculate the difference between the rotor and the sensor on the CF (global reference frame)
   const vec3d* pr = sweepInfo->rotorPos;
   vec3d stmp = {pcf[0] - (*pr)[0], pcf[1] - (*pr)[1], pcf[2] - (*pr)[2]};
   arm_matrix_instance_f32 stmp_ = {3, 1, stmp};
+
+  // DEBUG_PRINT("stmp: %f, %f, %f\n", (double)stmp[0], (double)stmp[1], (double)stmp[2]); //wc:edit
 
   // Rotate the difference in position to the rotor reference frame,
   // using the rotor inverse rotation matrix
@@ -55,6 +58,8 @@ void kalmanCoreUpdateWithSweepAngles(kalmanCoreData_t *this, sweepAngleMeasureme
   arm_matrix_instance_f32 Rr_inv_ = {3, 3, (float32_t *)(*sweepInfo->rotorRotInv)};
   arm_matrix_instance_f32 sr_ = {3, 1, sr};
   mat_mult(&Rr_inv_, &stmp_, &sr_);
+  // float32_t* sr_data = sr_.pData;
+  // DEBUG_PRINT("sr: %f, %f, %f\n", (double)sr_data[0], (double)sr_data[1], (double)sr_data[2]); //wc:edit
 
   // The following computations are in the rotor refernece frame
   const float x = sr[0];

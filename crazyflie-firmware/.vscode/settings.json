@@ -6,6 +6,7 @@
     },
     "files.associations": {
         "bootloader.h": "c",
-        "chrono": "c"
+        "chrono": "c",
+        "mm_sweep_angles.h": "c"
     }
 }
